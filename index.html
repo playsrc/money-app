@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mantenha suas finanças em dia com o Money App. Um aplicativo web para te ajudar a gerenciar seus ganhos e despesas."
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <title>Money App</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">
+          <i class="ph-wallet"></i>
+          Money App
+        </h1>
+        <button class="transaction-button" type="button">Nova transação</button>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card-list">
+        <section class="card">
+          <header>
+            <h2>Entradas</h2>
+            <i class="ph-arrow-circle-up"></i>
+          </header>
+          <p>R$ 1.500,00</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>Saídas</h2>
+            <i class="ph-arrow-circle-down"></i>
+          </header>
+          <p>R$ 500,00</p>
+        </section>
+        <section class="card">
+          <header>
+            <h2>Total</h2>
+            <i class="ph-currency-dollar"></i>
+          </header>
+          <p>R$ 1.000,00</p>
+        </section>
+      </div>
+
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Lorem ipsum, dolor sit amet consect.</td>
+            <td class="income">R$ 1.500,00</td>
+            <td>Lorem, ipsum.</td>
+            <td>09/07/2022</td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum, dolor sit amet consect.</td>
+            <td class="outcome">R$ 500,00</td>
+            <td>Lorem, ipsum.</td>
+            <td>09/07/2022</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

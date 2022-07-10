@@ -1,0 +1,303 @@
+/* --------- */
+/* Variables */
+/* --------- */
+
+:root {
+  --clr-red: hsl(340, 80%, 50%);
+  --clr-green: hsl(150, 70%, 30%);
+  --clr-green-light: hsl(150, 70%, 40%);
+  --clr-blue: hsl(256, 67%, 48%);
+  --clr-blue-light: hsl(256, 100%, 60%);
+  --clr-navy: hsl(227, 40%, 30%);
+  --clr-gray: hsl(227, 15%, 45%);
+  --clr-light: hsl(216, 20%, 95%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --ff-sans: "Poppins", sans-serif;
+
+  --fs-400: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2rem;
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  --shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ----- */
+/* Reset */
+/* ----- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ------- */
+/* General */
+/* ------- */
+
+body {
+  color: var(--clr-navy);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-400);
+  line-height: 1.5;
+  background-color: var(--clr-light);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: min(90%, 60rem);
+}
+
+/* ------ */
+/* Header */
+/* ------ */
+
+.header .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: var(--clr-blue);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: var(--fw-500);
+  font-size: var(--fs-600);
+  color: var(--clr-white);
+}
+
+.logo [class^="ph"] {
+  font-size: 3rem;
+  color: var(--clr-white);
+}
+
+.transaction-button {
+  font-family: inherit;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+  color: var(--clr-white);
+  min-width: 100%;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--clr-blue-light);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+/* ---------- */
+/* Cards List */
+/* ---------- */
+
+.card-list {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background-color: var(--clr-white);
+  flex-basis: 100%;
+  border-radius: 5px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card > header {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+}
+
+.card h2 {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-500);
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-500);
+}
+
+.card [class^="ph"] {
+  font-size: var(--fs-700);
+}
+
+.card:nth-child(1) [class^="ph"] {
+  color: var(--clr-green);
+}
+
+.card:nth-child(2) [class^="ph"] {
+  color: var(--clr-red);
+}
+
+.card:nth-child(3) [class^="ph"] {
+  color: var(--clr-white);
+}
+
+.card:nth-child(3) {
+  background-color: var(--clr-green);
+  color: var(--clr-white);
+}
+
+/* ------------------ */
+/* Transactions Table */
+/* ------------------ */
+
+.transactions-table {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.transactions-table thead {
+  display: none;
+}
+
+.transactions-table tr {
+  display: flex;
+  font-weight: var(--fw-500);
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  gap: 0.5em;
+}
+
+.transactions-table > tbody tr {
+  padding: 1em 1.5em;
+  background-color: var(--clr-white);
+  box-shadow: var(--shadow);
+}
+
+.transactions-table > tbody td:nth-child(1) {
+  color: var(--clr-navy);
+}
+
+.transactions-table > tbody td:nth-child(2) {
+  font-size: var(--fs-500);
+}
+
+.transactions-table .income {
+  color: var(--clr-green);
+  font-weight: var(--fw-600);
+}
+
+.transactions-table .outcome {
+  color: var(--clr-red);
+  font-weight: var(--fw-600);
+}
+
+@media (min-width: 480px) {
+  .header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .transaction-button {
+    min-width: auto;
+    padding: 0.65em 1.8em;
+  }
+}
+
+@media (min-width: 600px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .card:nth-child(3) {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media (min-width: 840px) {
+  .header {
+    padding-top: 2rem;
+    padding-bottom: 8rem;
+  }
+
+  .card {
+    box-shadow: none;
+  }
+
+  .card-list {
+    margin: 0;
+    transform: translateY(-50%);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  .card:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .transactions-table {
+    margin: 0;
+  }
+
+  .transactions-table thead {
+    display: block;
+  }
+
+  .transactions-table tr {
+    gap: 0;
+    flex-direction: row;
+    margin-bottom: 0.6rem;
+  }
+
+  .transactions-table > tbody tr {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 1em 1.5em;
+    text-align: start;
+    flex-basis: 100%;
+    font-weight: var(--fw-400);
+    color: var(--clr-gray);
+  }
+
+  .transactions-table > tbody td:nth-child(2) {
+    font-size: inherit;
+  }
+
+  .transactions-table > tbody td:nth-child(1),
+  .transactions-table > thead th:nth-child(1) {
+    font-size: inherit;
+    flex-basis: 200%;
+  }
+
+  .transactions-table > tbody td:nth-child(4),
+  .transactions-table > thead th:nth-child(4) {
+    flex-basis: 60%;
+  }
+}
+
+@media (min-width: 1080px) {
+  .card p {
+    font-size: var(--fs-700);
+  }
+}
