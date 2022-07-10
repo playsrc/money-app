@@ -40,6 +40,11 @@
   box-sizing: border-box;
 }
 
+:focus-visible {
+  outline: 2px dashed var(--clr-white);
+  outline-offset: 4px;
+}
+
 /* ------- */
 /* General */
 /* ------- */
@@ -88,18 +93,35 @@ body {
   color: var(--clr-white);
 }
 
-.transaction-button {
+.button {
   font-family: inherit;
   font-size: var(--fs-400);
   font-weight: var(--fw-400);
+  border: none;
+  cursor: pointer;
+}
+
+.transaction-button {
   color: var(--clr-white);
   min-width: 100%;
   padding: 1em;
-  border: none;
   border-radius: 5px;
   background-color: var(--clr-blue-light);
   box-shadow: var(--shadow);
-  cursor: pointer;
+
+  transition: background-color 0.1s linear, color 0.2s ease-in-out;
+}
+
+.transaction-button:focus-visible,
+.transaction-button:hover {
+  background-color: var(--clr-white);
+  color: var(--clr-navy);
+  box-shadow: none;
+  border: none;
+}
+
+.transaction-button:active {
+  opacity: 0.9;
 }
 
 /* ---------- */
@@ -205,6 +227,51 @@ body {
   font-weight: var(--fw-600);
 }
 
+/* ----------------- */
+/* Transaction Modal */
+/* ----------------- */
+
+.transaction-modal {
+  margin: 0 auto;
+  margin-top: auto;
+  min-width: 100%;
+  background-color: var(--clr-light);
+  border: none;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.header-modal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-modal * {
+  font-size: 1.125rem;
+  color: var(--clr-navy);
+}
+
+.form-modal {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-rows: repeat(5, 2em);
+}
+
+.types-modal {
+  display: flex;
+  gap: 0.5rem
+}
+
+.types-modal > button {
+  flex-basis: 100%;
+}
+
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 @media (min-width: 480px) {
   .header .container {
     display: flex;
@@ -292,7 +359,7 @@ body {
 
   .transactions-table > tbody td:nth-child(4),
   .transactions-table > thead th:nth-child(4) {
-    flex-basis: 60%;
+    flex-basis: 70%;
   }
 }
 

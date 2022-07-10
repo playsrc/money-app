@@ -29,7 +29,9 @@
           <i class="ph-wallet"></i>
           Money App
         </h1>
-        <button class="transaction-button" type="button">Nova transação</button>
+        <button class="button transaction-button" type="button">
+          Nova transação
+        </button>
       </div>
     </header>
 
@@ -42,6 +44,7 @@
           </header>
           <p>R$ 1.500,00</p>
         </section>
+
         <section class="card">
           <header>
             <h2>Saídas</h2>
@@ -49,6 +52,7 @@
           </header>
           <p>R$ 500,00</p>
         </section>
+
         <section class="card">
           <header>
             <h2>Total</h2>
@@ -84,5 +88,24 @@
         </tbody>
       </table>
     </div>
+
+    <dialog class="transaction-modal">
+      <div class="header-modal">
+        <h2>Cadastrar nova transação</h2>
+        <button class="button close-button" type="button"><i class="ph-x-bold"></i></button>
+      </div>
+      <form class="form-modal" action="dialog">
+        <input type="text" placeholder="Descrição" />
+        <input type="number" placeholder="Valor" />
+        <div class="types-modal">
+          <button type="button"><i class="ph-arrow-circle-up"></i> Entrada</button>
+          <button type="button"><i class="ph-arrow-circle-down"></i> Saída</button>
+        </div>
+        <input type="text" placeholder="Categoria" />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </dialog>
+
+    <script src="./script.js"></script>
   </body>
 </html>
