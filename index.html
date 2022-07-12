@@ -36,31 +36,31 @@
     </header>
 
     <div class="container">
-      <div class="card-list">
-        <section class="card">
+      <ul class="card-list" role="list">
+        <li class="card" tabindex="0" role="listitem">
           <header>
-            <h2>Entradas</h2>
+            <h2 aria-label="Valor total de entradas">Entradas</h2>
             <i class="ph-arrow-circle-up"></i>
           </header>
           <p>R$ 1.500,00</p>
-        </section>
+        </li>
 
-        <section class="card">
+        <li class="card" tabindex="0" role="listitem">
           <header>
-            <h2>Saídas</h2>
+            <h2 aria-label="Valor total de saídas">Saídas</h2>
             <i class="ph-arrow-circle-down"></i>
           </header>
           <p>R$ 500,00</p>
-        </section>
+        </li>
 
-        <section class="card">
+        <li class="card" tabindex="0" role="listitem">
           <header>
-            <h2>Total</h2>
+            <h2 aria-label="Valor do resultado">Total</h2>
             <i class="ph-currency-dollar"></i>
           </header>
           <p>R$ 1.000,00</p>
-        </section>
-      </div>
+        </li>
+      </ul>
 
       <table class="transactions-table">
         <thead>
@@ -72,37 +72,77 @@
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Lorem ipsum, dolor sit amet consect.</td>
-            <td class="income">R$ 1.500,00</td>
-            <td>Lorem, ipsum.</td>
-            <td>09/07/2022</td>
+        <tbody aria-label="Tabela de transações" tabindex="0">
+          <tr tabindex="0">
+            <td>
+              <span class="sr-only">Descrição </span>Lorem ipsum, dolor sit amet
+              consect.
+            </td>
+            <td class="income">
+              <span class="sr-only">Valor de entrada</span>R$ 1.500,00
+            </td>
+            <td><span class="sr-only">Categoria </span>Lorem, ipsum.</td>
+            <td><span class="sr-only">Data </span>09/07/2022</td>
           </tr>
-          <tr>
-            <td>Lorem ipsum, dolor sit amet consect.</td>
-            <td class="outcome">R$ 500,00</td>
-            <td>Lorem, ipsum.</td>
-            <td>09/07/2022</td>
+          <tr tabindex="0">
+            <td>
+              <span class="sr-only">Descrição </span>Lorem ipsum, dolor sit amet
+              consect.
+            </td>
+            <td class="outcome">
+              <span class="sr-only">Valor de saída</span>R$ 500,00
+            </td>
+            <td><span class="sr-only">Categoria </span>Lorem, ipsum.</td>
+            <td><span class="sr-only">Data </span>09/07/2022</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <dialog class="transaction-modal">
+    <dialog
+      aria-labelledby="modal-title"
+      role="dialog"
+      class="transaction-modal"
+    >
       <div class="header-modal">
-        <h2>Cadastrar nova transação</h2>
-        <button class="button close-button" type="button"><i class="ph-x-bold"></i></button>
+        <h2 id="modal-title">Cadastrar nova transação</h2>
+        <button
+          class="button close-button"
+          type="button"
+          aria-label="Fechar este diálogo"
+        >
+          <i class="ph-x-bold"></i>
+        </button>
       </div>
       <form class="form-modal" action="dialog">
         <input type="text" placeholder="Descrição" />
         <input type="number" placeholder="Valor" />
-        <div class="types-modal">
-          <button type="button"><i class="ph-arrow-circle-up"></i> Entrada</button>
-          <button type="button"><i class="ph-arrow-circle-down"></i> Saída</button>
+        <div
+          role="radiogroup"
+          class="types-modal"
+          aria-label="Tipo de transação"
+        >
+          <button
+            role="radio"
+            aria-checked="undefined"
+            type="button"
+            aria-label="Transação de entrada"
+          >
+            <i class="ph-arrow-circle-up"></i> Entrada
+          </button>
+          <button
+            role="radio"
+            aria-checked="undefined"
+            type="button"
+            aria-label="Transação de saída"
+          >
+            <i class="ph-arrow-circle-down"></i> Saída
+          </button>
         </div>
         <input type="text" placeholder="Categoria" />
-        <button type="submit">Cadastrar</button>
+        <button type="submit" aria-label="Cadastrar transação">
+          Cadastrar
+        </button>
       </form>
     </dialog>
 

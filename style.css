@@ -5,7 +5,7 @@
 :root {
   --clr-red: hsl(340, 80%, 50%);
   --clr-green: hsl(150, 70%, 30%);
-  --clr-green-light: hsl(150, 70%, 40%);
+  --clr-orange: hsl(40, 100%, 50%);
   --clr-blue: hsl(256, 67%, 48%);
   --clr-blue-light: hsl(256, 100%, 60%);
   --clr-navy: hsl(227, 40%, 30%);
@@ -41,8 +41,37 @@
 }
 
 :focus-visible {
-  outline: 2px dashed var(--clr-white);
-  outline-offset: 4px;
+  outline: 2px solid var(--clr-orange);
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ------- */
@@ -60,6 +89,20 @@ body {
 .container {
   margin: 0 auto;
   max-width: min(90%, 60rem);
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }
 
 /* ------ */
@@ -94,7 +137,6 @@ body {
 }
 
 .button {
-  font-family: inherit;
   font-size: var(--fs-400);
   font-weight: var(--fw-400);
   border: none;
@@ -261,7 +303,7 @@ body {
 
 .types-modal {
   display: flex;
-  gap: 0.5rem
+  gap: 0.5rem;
 }
 
 .types-modal > button {
@@ -271,6 +313,10 @@ body {
 ::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/* ------------- */
+/* Media queries */
+/* ------------- */
 
 @media (min-width: 480px) {
   .header .container {
