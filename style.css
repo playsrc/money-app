@@ -3,18 +3,19 @@
 /* --------- */
 
 :root {
-  --clr-red: hsl(340, 80%, 50%);
-  --clr-green: hsl(150, 70%, 30%);
-  --clr-orange: hsl(40, 100%, 50%);
-  --clr-blue: hsl(256, 67%, 48%);
-  --clr-blue-light: hsl(256, 100%, 60%);
-  --clr-navy: hsl(227, 40%, 30%);
-  --clr-gray: hsl(227, 15%, 45%);
-  --clr-light: hsl(216, 20%, 95%);
-  --clr-white: hsl(0, 0%, 100%);
+  --clr-red: 340, 80%, 50%;
+  --clr-green: 150, 70%, 30%;
+  --clr-orange: 40, 100%, 50%;
+  --clr-blue: 256, 67%, 48%;
+  --clr-blue-light: 256, 100%, 60%;
+  --clr-navy: 227, 40%, 30%;
+  --clr-gray: 227, 15%, 45%;
+  --clr-light: 216, 20%, 95%;
+  --clr-white: 0, 0%, 100%;
 
   --ff-sans: "Poppins", sans-serif;
 
+  --fs-300: 0.875rem;
   --fs-400: 1rem;
   --fs-500: 1.125rem;
   --fs-600: 1.5rem;
@@ -41,7 +42,7 @@
 }
 
 :focus-visible {
-  outline: 2px solid var(--clr-orange);
+  outline: 2px solid hsl(var(--clr-orange));
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -79,11 +80,11 @@ select {
 /* ------- */
 
 body {
-  color: var(--clr-navy);
+  color: hsl(var(--clr-navy));
   font-family: var(--ff-sans);
   font-size: var(--fs-400);
   line-height: 1.5;
-  background-color: var(--clr-light);
+  background-color: hsl(var(--clr-light));
 }
 
 .container {
@@ -119,7 +120,7 @@ body {
 .header {
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background-color: var(--clr-blue);
+  background-color: hsl(var(--clr-blue));
 }
 
 .logo {
@@ -128,12 +129,12 @@ body {
   gap: 0.5em;
   font-weight: var(--fw-500);
   font-size: var(--fs-600);
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
 }
 
 .logo [class^="ph"] {
   font-size: 3rem;
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
 }
 
 .button {
@@ -141,14 +142,15 @@ body {
   font-weight: var(--fw-400);
   border: none;
   cursor: pointer;
+  background: none;
 }
 
 .transaction-button {
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
   min-width: 100%;
   padding: 1em;
   border-radius: 5px;
-  background-color: var(--clr-blue-light);
+  background-color: hsl(var(--clr-blue-light));
   box-shadow: var(--shadow);
 
   transition: background-color 0.1s linear, color 0.2s ease-in-out;
@@ -156,8 +158,8 @@ body {
 
 .transaction-button:focus-visible,
 .transaction-button:hover {
-  background-color: var(--clr-white);
-  color: var(--clr-navy);
+  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-navy));
   box-shadow: none;
   border: none;
 }
@@ -178,7 +180,7 @@ body {
 }
 
 .card {
-  background-color: var(--clr-white);
+  background-color: hsl(var(--clr-white));
   flex-basis: 100%;
   border-radius: 5px;
   padding: 1.5rem;
@@ -206,20 +208,20 @@ body {
 }
 
 .card:nth-child(1) [class^="ph"] {
-  color: var(--clr-green);
+  color: hsl(var(--clr-green));
 }
 
 .card:nth-child(2) [class^="ph"] {
-  color: var(--clr-red);
+  color: hsl(var(--clr-red));
 }
 
 .card:nth-child(3) [class^="ph"] {
-  color: var(--clr-white);
+  color: hsl(var(--clr-white));
 }
 
 .card:nth-child(3) {
-  background-color: var(--clr-green);
-  color: var(--clr-white);
+  background-color: hsl(var(--clr-green));
+  color: hsl(var(--clr-white));
 }
 
 /* ------------------ */
@@ -247,12 +249,12 @@ body {
 
 .transactions-table > tbody tr {
   padding: 1em 1.5em;
-  background-color: var(--clr-white);
+  background-color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
 }
 
 .transactions-table > tbody td:nth-child(1) {
-  color: var(--clr-navy);
+  color: hsl(var(--clr-navy));
 }
 
 .transactions-table > tbody td:nth-child(2) {
@@ -260,12 +262,12 @@ body {
 }
 
 .transactions-table .income {
-  color: var(--clr-green);
+  color: hsl(var(--clr-green));
   font-weight: var(--fw-600);
 }
 
 .transactions-table .outcome {
-  color: var(--clr-red);
+  color: hsl(var(--clr-red));
   font-weight: var(--fw-600);
 }
 
@@ -273,11 +275,15 @@ body {
 /* Transaction Modal */
 /* ----------------- */
 
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .transaction-modal {
   margin: 0 auto;
   margin-top: auto;
   min-width: 100%;
-  background-color: var(--clr-light);
+  background-color: hsl(var(--clr-light));
   border: none;
   padding: 1rem;
   border-top-left-radius: 1rem;
@@ -292,13 +298,31 @@ body {
 
 .header-modal * {
   font-size: 1.125rem;
-  color: var(--clr-navy);
+  color: hsl(var(--clr-navy));
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .form-modal {
   display: grid;
   gap: 0.5rem;
-  grid-template-rows: repeat(5, 2em);
+  grid-template-rows: repeat(5, 2.5em);
+}
+
+.submit-button,
+.income-button,
+.outcome-button,
+.form-modal > input {
+  font-size: var(--fs-400);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border: 1px solid hsl(var(--clr-gray), 0.5);
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-navy));
 }
 
 .types-modal {
@@ -306,12 +330,56 @@ body {
   gap: 0.5rem;
 }
 
-.types-modal > button {
+.income-button,
+.outcome-button {
   flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
-::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+.income-button:hover,
+.outcome-button:hover {
+  color: black;
+  border: 1px solid hsl(var(--clr-gray), 1);
+}
+
+.income-button.active {
+  color: black;
+  background-color: hsl(var(--clr-green), 0.1);
+  border: 2px dashed hsl(var(--clr-green));
+}
+
+.outcome-button.active {
+  color: black;
+  background-color: hsl(var(--clr-red), 0.1);
+  border: 2px dashed hsl(var(--clr-red));
+}
+
+.types-modal [class^="ph"] {
+  font-size: var(--fs-600);
+}
+
+.types-modal > button:nth-child(1) [class^="ph"] {
+  color: hsl(var(--clr-green));
+}
+
+.types-modal > button:nth-child(2) [class^="ph"] {
+  color: hsl(var(--clr-red));
+}
+
+.submit-button {
+  color: hsl(var(--clr-white));
+  border: 1px solid hsl(var(--clr-gray));
+  background-color: hsl(var(--clr-blue));
+
+  transition: background-color 0.1s linear;
+}
+
+.submit-button:focus-visible,
+.submit-button:hover {
+  background-color: hsl(var(--clr-green));
 }
 
 /* ------------- */
@@ -340,6 +408,22 @@ body {
 
   .card:nth-child(3) {
     grid-column: 1 / span 2;
+  }
+
+  .transaction-modal {
+    margin: auto;
+    min-width: min(90%, 35rem);
+    background-color: hsl(var(--clr-light));
+    border: none;
+    padding: 2.5rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 2px 4px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 }
 
@@ -390,7 +474,7 @@ body {
     text-align: start;
     flex-basis: 100%;
     font-weight: var(--fw-400);
-    color: var(--clr-gray);
+    color: hsl(var(--clr-gray));
   }
 
   .transactions-table > tbody td:nth-child(2) {

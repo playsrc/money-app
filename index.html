@@ -29,7 +29,11 @@
           <i class="ph-wallet"></i>
           Money App
         </h1>
-        <button class="button transaction-button" type="button">
+        <button
+          class="button transaction-button"
+          type="button"
+          aria-controls="dialog"
+        >
           Nova transação
         </button>
       </div>
@@ -62,7 +66,11 @@
         </li>
       </ul>
 
-      <table class="transactions-table">
+      <table
+        class="transactions-table"
+        aria-label="Tabela de transações"
+        tabindex="0"
+      >
         <thead>
           <tr>
             <th>Descrição</th>
@@ -72,7 +80,7 @@
           </tr>
         </thead>
 
-        <tbody aria-label="Tabela de transações" tabindex="0">
+        <tbody>
           <tr tabindex="0">
             <td>
               <span class="sr-only">Descrição </span>Lorem ipsum, dolor sit amet
@@ -100,12 +108,14 @@
     </div>
 
     <dialog
+      id="dialog"
       aria-labelledby="modal-title"
       role="dialog"
       class="transaction-modal"
     >
       <div class="header-modal">
         <h2 id="modal-title">Cadastrar nova transação</h2>
+
         <button
           class="button close-button"
           type="button"
@@ -114,9 +124,11 @@
           <i class="ph-x-bold"></i>
         </button>
       </div>
+
       <form class="form-modal" action="dialog">
         <input type="text" placeholder="Descrição" />
         <input type="number" placeholder="Valor" />
+
         <div
           role="radiogroup"
           class="types-modal"
@@ -126,21 +138,28 @@
             role="radio"
             aria-checked="undefined"
             type="button"
-            aria-label="Transação de entrada"
+            class="button income-button"
           >
-            <i class="ph-arrow-circle-up"></i> Entrada
+            <i class="ph-arrow-circle-up"></i>
+            <span>Entrada</span>
           </button>
           <button
             role="radio"
             aria-checked="undefined"
             type="button"
-            aria-label="Transação de saída"
+            class="button outcome-button"
           >
-            <i class="ph-arrow-circle-down"></i> Saída
+            <i class="ph-arrow-circle-down"></i>
+            <span>Saída</span>
           </button>
         </div>
+
         <input type="text" placeholder="Categoria" />
-        <button type="submit" aria-label="Cadastrar transação">
+        <button
+          class="button submit-button"
+          type="submit"
+          aria-label="Cadastrar transação"
+        >
           Cadastrar
         </button>
       </form>
