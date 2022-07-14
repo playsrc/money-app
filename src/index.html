@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mantenha suas finanças em dia com o Money App. Um aplicativo web para te ajudar a gerenciar seus ganhos e despesas."
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Money App</title>
+  </head>
+
+  <body>
+    <header class="header-background">
+      <div class="container">
+        <div class="logo-container">
+          <img src="./assets/wallet.svg" alt="" />
+          <h1>Money App</h1>
+        </div>
+        <button class="button registry-button" aria-controls="dialog">
+          Novo lançamento
+        </button>
+      </div>
+    </header>
+
+    <div class="container">
+      <ul class="card-list">
+        <li class="card">
+          <div class="card-header">
+            <p aria-label="Valor total de entradas">Entradas</p>
+            <img src="./assets/arrow-circle-up.svg" alt="" />
+          </div>
+          <p>R$ 1.500,00</p>
+        </li>
+
+        <li class="card">
+          <div class="card-header">
+            <p aria-label="Valor total de saídas">Saídas</p>
+            <img src="./assets/arrow-circle-down.svg" alt="" />
+          </div>
+          <p>R$ 500,00</p>
+        </li>
+
+        <li class="card">
+          <div class="card-header">
+            <p aria-label="Valor do resultado">Total</p>
+            <img src="./assets/currency-dollar.svg" alt="" />
+          </div>
+          <p>R$ 1.000,00</p>
+        </li>
+      </ul>
+
+      <table class="entries-table">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Lorem ipsum, dolor sit amet consect.</td>
+            <td class="income">R$ 1.500,00</td>
+            <td>Lorem, ipsum.</td>
+            <td>09/07/2022</td>
+          </tr>
+          <tr>
+            <td>Lorem ipsum, dolor sit amet consect.</td>
+            <td class="outcome">R$ 500,00</td>
+            <td>Lorem, ipsum.</td>
+            <td>09/07/2022</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <dialog
+      id="dialog"
+      role="dialog"
+      aria-labelledby="modal-title"
+      class="registry-modal"
+    >
+      <div class="modal-header">
+        <h2 id="modal-title">Cadastrar nova transação</h2>
+        <button class="button close-button" aria-label="Fechar este diálogo">
+          <img src="./assets/close.svg" alt="" />
+        </button>
+      </div>
+
+      <form class="modal-form" action="dialog">
+        <input type="text" placeholder="Descrição" />
+        <input type="number" placeholder="Valor" />
+
+        <div
+          role="radiogroup"
+          class="modal-button-group"
+          aria-label="Tipo de transação"
+        >
+          <button
+            role="radio"
+            aria-checked="true"
+            type="button"
+            class="button income-button active"
+          >
+            <img src="./assets/arrow-circle-up.svg" alt="" />
+            <span>Entrada</span>
+          </button>
+          <button
+            role="radio"
+            aria-checked="undefined"
+            type="button"
+            class="button outcome-button"
+          >
+            <img src="./assets/arrow-circle-down.svg" alt="" />
+            <span>Saída</span>
+          </button>
+        </div>
+
+        <input type="text" placeholder="Categoria" />
+        <button class="button submit-button" type="submit">Cadastrar</button>
+      </form>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

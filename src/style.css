@@ -1,6 +1,6 @@
-/* --------- */
-/* Variables */
-/* --------- */
+/* ------------------------------------------- */
+/*                  Variables                  */
+/* ------------------------------------------- */
 
 :root {
   --clr-red: 340, 80%, 50%;
@@ -12,6 +12,7 @@
   --clr-gray: 227, 15%, 45%;
   --clr-light: 216, 20%, 95%;
   --clr-white: 0, 0%, 100%;
+  --clr-black: 0, 0%, 0%;
 
   --ff-sans: "Poppins", sans-serif;
 
@@ -27,11 +28,12 @@
   --fw-700: 700;
 
   --shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-2: 2px 4px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* ----- */
-/* Reset */
-/* ----- */
+/* ------------------------------------------- */
+/*                    Reset                    */
+/* ------------------------------------------- */
 
 *,
 *::before,
@@ -43,12 +45,6 @@
 
 :focus-visible {
   outline: 2px solid hsl(var(--clr-orange));
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -75,9 +71,9 @@ select {
   }
 }
 
-/* ------- */
-/* General */
-/* ------- */
+/* ------------------------------------------- */
+/*              General & Utilities            */
+/* ------------------------------------------- */
 
 body {
   color: hsl(var(--clr-navy));
@@ -90,6 +86,14 @@ body {
 .container {
   margin: 0 auto;
   max-width: min(90%, 60rem);
+}
+
+.button {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 .sr-only {
@@ -106,49 +110,38 @@ body {
   white-space: nowrap !important;
 }
 
-/* ------ */
-/* Header */
-/* ------ */
+/* ------------------------------------------- */
+/*                    Header                   */
+/* ------------------------------------------- */
 
-.header .container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.header {
+.header-background {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: hsl(var(--clr-blue));
 }
 
-.logo {
+.logo-container {
   display: flex;
   align-items: center;
   gap: 0.5em;
+}
+
+.logo-container > img {
+  width: 3rem;
+}
+
+.logo-container > h1 {
   font-weight: var(--fw-500);
   font-size: var(--fs-600);
   color: hsl(var(--clr-white));
 }
 
-.logo [class^="ph"] {
-  font-size: 3rem;
-  color: hsl(var(--clr-white));
-}
-
-.button {
-  font-size: var(--fs-400);
-  font-weight: var(--fw-400);
-  border: none;
-  cursor: pointer;
-  background: none;
-}
-
-.transaction-button {
-  color: hsl(var(--clr-white));
+.registry-button {
+  margin-top: 1rem;
   min-width: 100%;
-  padding: 1em;
+  padding: 1em 1.5em;
+
+  color: hsl(var(--clr-white));
   border-radius: 5px;
   background-color: hsl(var(--clr-blue-light));
   box-shadow: var(--shadow);
@@ -156,67 +149,57 @@ body {
   transition: background-color 0.1s linear, color 0.2s ease-in-out;
 }
 
-.transaction-button:focus-visible,
-.transaction-button:hover {
-  background-color: hsl(var(--clr-white));
+.registry-button:focus-visible,
+.registry-button:hover {
   color: hsl(var(--clr-navy));
-  box-shadow: none;
   border: none;
+  background-color: hsl(var(--clr-white));
+  box-shadow: none;
 }
 
-.transaction-button:active {
+.registry-button:active {
   opacity: 0.9;
 }
 
-/* ---------- */
-/* Cards List */
-/* ---------- */
+/* ------------------------------------------- */
+/*                  Cards List                 */
+/* ------------------------------------------- */
 
 .card-list {
-  margin-top: 1.5rem;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
+
+  margin-top: 1.5rem;
+  list-style: none;
 }
 
 .card {
-  background-color: hsl(var(--clr-white));
+  padding: 1.5rem;
   flex-basis: 100%;
   border-radius: 5px;
-  padding: 1.5rem;
+  background-color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
 }
 
-.card > header {
+.card-header {
   display: grid;
   grid-template-columns: 1fr max-content;
 }
 
-.card h2 {
+.card-header > p {
   font-size: var(--fs-400);
   font-weight: var(--fw-500);
   margin-bottom: 1rem;
 }
 
-.card p {
+.card-header > img {
+  width: 2rem;
+}
+
+.card > p {
   font-size: var(--fs-600);
   font-weight: var(--fw-500);
-}
-
-.card [class^="ph"] {
-  font-size: var(--fs-700);
-}
-
-.card:nth-child(1) [class^="ph"] {
-  color: hsl(var(--clr-green));
-}
-
-.card:nth-child(2) [class^="ph"] {
-  color: hsl(var(--clr-red));
-}
-
-.card:nth-child(3) [class^="ph"] {
-  color: hsl(var(--clr-white));
 }
 
 .card:nth-child(3) {
@@ -224,81 +207,89 @@ body {
   color: hsl(var(--clr-white));
 }
 
-/* ------------------ */
-/* Transactions Table */
-/* ------------------ */
+/* ------------------------------------------- */
+/*                 Entries Table               */
+/* ------------------------------------------- */
 
-.transactions-table {
+.entries-table {
   margin-top: 2rem;
   width: 100%;
 }
 
-.transactions-table thead {
+.entries-table thead {
   display: none;
 }
 
-.transactions-table tr {
+.entries-table tr {
   display: flex;
-  font-weight: var(--fw-500);
   flex-direction: column;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  overflow: hidden;
   gap: 0.5em;
+
+  overflow: hidden;
+  border-radius: 5px;
+  font-weight: var(--fw-500);
+
+  margin-bottom: 1rem;
 }
 
-.transactions-table > tbody tr {
+.entries-table > tbody tr {
   padding: 1em 1.5em;
   background-color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
 }
 
-.transactions-table > tbody td:nth-child(1) {
+.entries-table > tbody td:nth-child(1) {
   color: hsl(var(--clr-navy));
 }
 
-.transactions-table > tbody td:nth-child(2) {
+.entries-table > tbody td:nth-child(2) {
   font-size: var(--fs-500);
 }
 
-.transactions-table .income {
+.entries-table .income {
   color: hsl(var(--clr-green));
   font-weight: var(--fw-600);
 }
 
-.transactions-table .outcome {
+.entries-table .outcome {
   color: hsl(var(--clr-red));
   font-weight: var(--fw-600);
 }
 
-/* ----------------- */
-/* Transaction Modal */
-/* ----------------- */
+/* ------------------------------------------- */
+/*                 Registry Modal              */
+/* ------------------------------------------- */
 
 ::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.transaction-modal {
+.registry-modal {
   margin: 0 auto;
   margin-top: auto;
   min-width: 100%;
-  background-color: hsl(var(--clr-light));
-  border: none;
   padding: 1rem;
+
+  border: none;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+
+  background-color: hsl(var(--clr-light));
 }
 
-.header-modal {
+.modal-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.header-modal * {
-  font-size: 1.125rem;
+.modal-header h2 {
+  font-size: var(--fs-500);
   color: hsl(var(--clr-navy));
+}
+
+.modal-header img {
+  width: 1.125rem;
 }
 
 .close-button {
@@ -307,25 +298,27 @@ body {
   padding: 0.5rem;
 }
 
-.form-modal {
-  display: grid;
+.modal-form {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  grid-template-rows: repeat(5, 2.5em);
 }
 
-.submit-button,
+.modal-form > input,
 .income-button,
 .outcome-button,
-.form-modal > input {
-  font-size: var(--fs-400);
-  border-radius: 5px;
+.submit-button {
   padding: 0.5rem 1rem;
-  border: 1px solid hsl(var(--clr-gray), 0.5);
-  background: hsl(var(--clr-white));
+
+  font-size: var(--fs-400);
   color: hsl(var(--clr-navy));
+  background: hsl(var(--clr-white));
+
+  border-radius: 5px;
+  border: 1px solid hsl(var(--clr-gray), 0.5);
 }
 
-.types-modal {
+.modal-button-group {
   display: flex;
   gap: 0.5rem;
 }
@@ -339,63 +332,55 @@ body {
   gap: 0.5em;
 }
 
+.income-button > img,
+.outcome-button > img {
+  width: 1.5rem;
+}
+
 .income-button:hover,
 .outcome-button:hover {
-  color: black;
+  color: hsl(var(--clr-black));
   border: 1px solid hsl(var(--clr-gray), 1);
 }
 
 .income-button.active {
-  color: black;
+  color: hsl(var(--clr-black));
   background-color: hsl(var(--clr-green), 0.1);
-  border: 2px dashed hsl(var(--clr-green));
+  border: 2px solid hsl(var(--clr-green));
 }
 
 .outcome-button.active {
-  color: black;
+  color: hsl(var(--clr-black));
   background-color: hsl(var(--clr-red), 0.1);
-  border: 2px dashed hsl(var(--clr-red));
-}
-
-.types-modal [class^="ph"] {
-  font-size: var(--fs-600);
-}
-
-.types-modal > button:nth-child(1) [class^="ph"] {
-  color: hsl(var(--clr-green));
-}
-
-.types-modal > button:nth-child(2) [class^="ph"] {
-  color: hsl(var(--clr-red));
+  border: 2px solid hsl(var(--clr-red));
 }
 
 .submit-button {
+  margin-top: 1rem;
   color: hsl(var(--clr-white));
-  border: 1px solid hsl(var(--clr-gray));
   background-color: hsl(var(--clr-blue));
-
   transition: background-color 0.1s linear;
 }
 
 .submit-button:focus-visible,
 .submit-button:hover {
-  background-color: hsl(var(--clr-green));
+  background-color: hsl(var(--clr-blue-light));
 }
 
-/* ------------- */
-/* Media queries */
-/* ------------- */
+/* ------------------------------------------- */
+/*                  Media Queries              */
+/* ------------------------------------------- */
 
 @media (min-width: 480px) {
-  .header .container {
+  .header-background .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .transaction-button {
+  .registry-button {
+    margin-top: 0;
     min-width: auto;
-    padding: 0.65em 1.8em;
   }
 }
 
@@ -410,14 +395,23 @@ body {
     grid-column: 1 / span 2;
   }
 
-  .transaction-modal {
+  .registry-modal {
     margin: auto;
-    min-width: min(90%, 35rem);
+    min-width: 30rem;
     background-color: hsl(var(--clr-light));
     border: none;
     padding: 2.5rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 2px 4px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-2);
+  }
+
+  .modal-header h2 {
+    font-size: var(--fs-600);
+    color: hsl(var(--clr-navy));
+  }
+
+  .modal-form {
+    gap: 0.8rem;
   }
 
   .close-button {
@@ -428,7 +422,7 @@ body {
 }
 
 @media (min-width: 840px) {
-  .header {
+  .header-background {
     padding-top: 2rem;
     padding-bottom: 8rem;
   }
@@ -440,6 +434,7 @@ body {
   .card-list {
     margin: 0;
     transform: translateY(-50%);
+
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
@@ -449,52 +444,51 @@ body {
     grid-column: auto;
   }
 
-  .transactions-table {
+  .entries-table {
     margin: 0;
   }
 
-  .transactions-table thead {
+  .entries-table thead {
     display: block;
   }
 
-  .transactions-table tr {
+  .entries-table tr {
     gap: 0;
     flex-direction: row;
     margin-bottom: 0.6rem;
   }
 
-  .transactions-table > tbody tr {
+  .entries-table > tbody tr {
     box-shadow: none;
     padding: 0;
   }
 
-  .transactions-table th,
-  .transactions-table td {
+  .entries-table th,
+  .entries-table td {
     padding: 1em 1.5em;
-    text-align: start;
     flex-basis: 100%;
+    text-align: start;
     font-weight: var(--fw-400);
     color: hsl(var(--clr-gray));
   }
 
-  .transactions-table > tbody td:nth-child(2) {
+  .entries-table > tbody td:nth-child(2) {
     font-size: inherit;
   }
 
-  .transactions-table > tbody td:nth-child(1),
-  .transactions-table > thead th:nth-child(1) {
-    font-size: inherit;
+  .entries-table > tbody td:nth-child(1),
+  .entries-table > thead th:nth-child(1) {
     flex-basis: 200%;
   }
 
-  .transactions-table > tbody td:nth-child(4),
-  .transactions-table > thead th:nth-child(4) {
+  .entries-table > tbody td:nth-child(4),
+  .entries-table > thead th:nth-child(4) {
     flex-basis: 70%;
   }
 }
 
 @media (min-width: 1080px) {
-  .card p {
+  .card > p {
     font-size: var(--fs-700);
   }
 }
