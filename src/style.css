@@ -208,19 +208,19 @@ body {
 }
 
 /* ------------------------------------------- */
-/*                 Entries Table               */
+/*                 Records Table               */
 /* ------------------------------------------- */
 
-.entries-table {
+.records-table {
   margin-top: 2rem;
   width: 100%;
 }
 
-.entries-table thead {
+.records-table thead {
   display: none;
 }
 
-.entries-table tr {
+.records-table tr {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -232,26 +232,26 @@ body {
   margin-bottom: 1rem;
 }
 
-.entries-table > tbody tr {
+.records-table > tbody tr {
   padding: 1em 1.5em;
   background-color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
 }
 
-.entries-table > tbody td:nth-child(1) {
+.records-table > tbody td:nth-child(1) {
   color: hsl(var(--clr-navy));
 }
 
-.entries-table > tbody td:nth-child(2) {
+.records-table > tbody td:nth-child(2) {
   font-size: var(--fs-500);
 }
 
-.entries-table .income {
+.records-table .income {
   color: hsl(var(--clr-green));
   font-weight: var(--fw-600);
 }
 
-.entries-table .outcome {
+.records-table .expense {
   color: hsl(var(--clr-red));
   font-weight: var(--fw-600);
 }
@@ -306,7 +306,7 @@ body {
 
 .modal-form > input,
 .income-button,
-.outcome-button,
+.expense-button,
 .submit-button {
   padding: 0.5rem 1rem;
 
@@ -324,7 +324,7 @@ body {
 }
 
 .income-button,
-.outcome-button {
+.expense-button {
   flex-basis: 100%;
   display: flex;
   align-items: center;
@@ -333,12 +333,12 @@ body {
 }
 
 .income-button > img,
-.outcome-button > img {
+.expense-button > img {
   width: 1.5rem;
 }
 
 .income-button:hover,
-.outcome-button:hover {
+.expense-button:hover {
   color: hsl(var(--clr-black));
   border: 1px solid hsl(var(--clr-gray), 1);
 }
@@ -349,7 +349,7 @@ body {
   border: 2px solid hsl(var(--clr-green));
 }
 
-.outcome-button.active {
+.expense-button.active {
   color: hsl(var(--clr-black));
   background-color: hsl(var(--clr-red), 0.1);
   border: 2px solid hsl(var(--clr-red));
@@ -444,27 +444,27 @@ body {
     grid-column: auto;
   }
 
-  .entries-table {
+  .records-table {
     margin: 0;
   }
 
-  .entries-table thead {
+  .records-table thead {
     display: block;
   }
 
-  .entries-table tr {
+  .records-table tr {
     gap: 0;
     flex-direction: row;
     margin-bottom: 0.6rem;
   }
 
-  .entries-table > tbody tr {
+  .records-table > tbody tr {
     box-shadow: none;
     padding: 0;
   }
 
-  .entries-table th,
-  .entries-table td {
+  .records-table th,
+  .records-table td {
     padding: 1em 1.5em;
     flex-basis: 100%;
     text-align: start;
@@ -472,17 +472,17 @@ body {
     color: hsl(var(--clr-gray));
   }
 
-  .entries-table > tbody td:nth-child(2) {
+  .records-table > tbody td:nth-child(2) {
     font-size: inherit;
   }
 
-  .entries-table > tbody td:nth-child(1),
-  .entries-table > thead th:nth-child(1) {
+  .records-table > tbody td:nth-child(1),
+  .records-table > thead th:nth-child(1) {
     flex-basis: 200%;
   }
 
-  .entries-table > tbody td:nth-child(4),
-  .entries-table > thead th:nth-child(4) {
+  .records-table > tbody td:nth-child(4),
+  .records-table > thead th:nth-child(4) {
     flex-basis: 70%;
   }
 }

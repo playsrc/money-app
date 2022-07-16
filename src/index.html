@@ -41,7 +41,7 @@
             <p aria-label="Valor total de entradas">Entradas</p>
             <img src="./assets/arrow-circle-up.svg" alt="" />
           </div>
-          <p>R$ 1.500,00</p>
+          <p id="incomeTotal"></p>
         </li>
 
         <li class="card">
@@ -49,19 +49,19 @@
             <p aria-label="Valor total de saídas">Saídas</p>
             <img src="./assets/arrow-circle-down.svg" alt="" />
           </div>
-          <p>R$ 500,00</p>
+          <p id="expenseTotal"></p>
         </li>
 
         <li class="card">
           <div class="card-header">
-            <p aria-label="Valor do resultado">Total</p>
+            <p aria-label="Valor de saldo">Saldo</p>
             <img src="./assets/currency-dollar.svg" alt="" />
           </div>
-          <p>R$ 1.000,00</p>
+          <p id="balanceTotal"></p>
         </li>
       </ul>
 
-      <table class="entries-table">
+      <table class="records-table">
         <thead>
           <tr>
             <th>Descrição</th>
@@ -70,21 +70,7 @@
             <th>Data</th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td>Lorem ipsum, dolor sit amet consect.</td>
-            <td class="income">R$ 1.500,00</td>
-            <td>Lorem, ipsum.</td>
-            <td>09/07/2022</td>
-          </tr>
-          <tr>
-            <td>Lorem ipsum, dolor sit amet consect.</td>
-            <td class="outcome">R$ 500,00</td>
-            <td>Lorem, ipsum.</td>
-            <td>09/07/2022</td>
-          </tr>
-        </tbody>
+        <tbody id="recordsTable"></tbody>
       </table>
     </div>
 
@@ -95,15 +81,26 @@
       class="registry-modal"
     >
       <div class="modal-header">
-        <h2 id="modal-title">Cadastrar nova transação</h2>
+        <h2 id="modal-title">Cadastrar novo lançamento</h2>
         <button class="button close-button" aria-label="Fechar este diálogo">
           <img src="./assets/close.svg" alt="" />
         </button>
       </div>
 
-      <form class="modal-form" action="dialog">
-        <input type="text" placeholder="Descrição" />
-        <input type="number" placeholder="Valor" />
+      <form class="modal-form" action="dialog" autocomplete="off">
+        <input
+          type="text"
+          placeholder="Descrição"
+          id="descriptionInput"
+          required="true"
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Valor"
+          id="amountInput"
+          required="true"
+        />
 
         <div
           role="radiogroup"
@@ -123,14 +120,14 @@
             role="radio"
             aria-checked="undefined"
             type="button"
-            class="button outcome-button"
+            class="button expense-button"
           >
             <img src="./assets/arrow-circle-down.svg" alt="" />
             <span>Saída</span>
           </button>
         </div>
 
-        <input type="text" placeholder="Categoria" />
+        <input type="text" placeholder="Categoria" id="categoryInput" />
         <button class="button submit-button" type="submit">Cadastrar</button>
       </form>
     </dialog>
