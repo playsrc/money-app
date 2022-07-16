@@ -1,20 +1,32 @@
 // Mock Database
-const records = [
-  {
-    description: "Lorem ipsum, dolor sit amet consect.",
-    amount: 1500,
-    type: "income",
-    category: "Lorem, ipsum.",
-    createdAt: new Date(),
-  },
-  {
-    description: "Lorem ipsum, dolor sit amet consect.",
-    amount: 500,
-    type: "expense",
-    category: "Lorem, ipsum.",
-    createdAt: new Date(),
-  },
-];
+const storedRecords = JSON.parse(localStorage.getItem("records")) || [];
+
+function createRecord(record) {
+  storedRecords.push(record);
+
+  localStorage.setItem("records", JSON.stringify(storedRecords));
+  console.log(storedRecords);
+}
+
+/* localStorage.setItem(
+  "records",
+  JSON.stringify([
+    {
+      description: "Lorem ipsum, dolor sit amet consect.",
+      amount: 1500,
+      type: "income",
+      category: "Lorem, ipsum.",
+      createdAt: new Date(),
+    },
+    {
+      description: "Lorem ipsum, dolor sit amet consect.",
+      amount: 500,
+      type: "expense",
+      category: "Lorem, ipsum.",
+      createdAt: new Date(),
+    },
+  ])
+); */
 
 // Card List
 const incomeTotal = document.getElementById("incomeTotal");
@@ -22,11 +34,11 @@ const expenseTotal = document.getElementById("expenseTotal");
 const balanceTotal = document.getElementById("balanceTotal");
 
 function updateAmounts() {
-  const income = records.reduce((acc, record) => {
+  const income = storedRecords.reduce((acc, record) => {
     return record.type === "income" ? acc + record.amount : acc;
   }, 0);
 
-  const expense = records.reduce((acc, record) => {
+  const expense = storedRecords.reduce((acc, record) => {
     return record.type === "expense" ? acc + record.amount : acc;
   }, 0);
 
@@ -53,17 +65,19 @@ const recordsTable = document.getElementById("recordsTable");
 function renderRecords() {
   recordsTable.innerHTML = "";
 
-  records.map((record) => {
-    const newRecord = document.createElement("tr");
+  storedRecords.forEach((record) => {
+    const displayNewRecord = document.createElement("tr");
 
-    newRecord.innerHTML = `
-    <td>${record.description}</td>
-    <td class="${record.type}">${formatter(record.amount)}</td>
-    <td>${record.category}</td>
-    <td>${new Intl.DateTimeFormat("pt-BR").format(record.createdAt)}</td>
-  `;
+    displayNewRecord.innerHTML = `
+      <td>${record.description}</td>
+      <td class="${record.type}">${formatter(record.amount)}</td>
+      <td>${record.category}</td>
+      <td>${new Intl.DateTimeFormat("pt-BR").format(
+        new Date(record.createdAt)
+      )}</td>
+    `;
 
-    recordsTable.appendChild(newRecord);
+    recordsTable.appendChild(displayNewRecord);
   });
 
   updateAmounts();
@@ -93,7 +107,7 @@ const submitButton = document.querySelector(".submit-button");
 modalForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  records.push({
+  createRecord({
     description: descriptionInput.value,
     amount: parseFloat(amountInput.value),
     type: incomeButton.classList.contains("active") ? "income" : "expense",
