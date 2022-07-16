@@ -101,9 +101,11 @@ modalForm.addEventListener("submit", (e) => {
     createdAt: new Date(),
   });
 
-  console.log(records);
-
   renderRecords();
+
+  descriptionInput.value = "";
+  amountInput.value = "";
+  categoryInput.value = "";
 
   modal.close();
 });
