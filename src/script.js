@@ -1,5 +1,5 @@
 // Mock Database
-const storedRecords = JSON.parse(localStorage.getItem("records")) || [];
+let storedRecords = JSON.parse(localStorage.getItem("records")) || [];
 
 function createRecord(record) {
   storedRecords.push(record);
@@ -75,39 +75,49 @@ function renderRecords() {
       <td>${new Intl.DateTimeFormat("pt-BR").format(
         new Date(record.createdAt)
       )}</td>
+
+      <button
+        id=${record.id}
+        class="button edit-button"
+        aria-controls="editDialog"
+      >
+        <img src="./assets/pencil-simple-line.svg" />
+      </button>
     `;
 
     recordsTable.appendChild(displayNewRecord);
   });
 
   updateAmounts();
+  handleEditModal();
 }
 
 renderRecords();
 
-// Modal Window
-const openModal = document.querySelector(".registry-button");
-const closeModal = document.querySelector(".close-button");
-const modal = document.querySelector(".registry-modal");
+// Registry Modal Window
+const openModal = document.getElementById("registryButton");
+const closeModal = document.getElementById("closeButton");
+const modal = document.getElementById("dialog");
 
 openModal.addEventListener("click", () => modal.showModal());
 closeModal.addEventListener("click", () => modal.close());
 
 // Modal Form
-const modalForm = document.querySelector(".modal-form");
+const modalForm = document.getElementById("modalForm");
 
 const descriptionInput = document.getElementById("descriptionInput");
 const amountInput = document.getElementById("amountInput");
 const categoryInput = document.getElementById("categoryInput");
 
-const incomeButton = document.querySelector(".income-button");
-const expenseButton = document.querySelector(".expense-button");
-const submitButton = document.querySelector(".submit-button");
+const incomeButton = document.getElementById("incomeButton");
+const expenseButton = document.getElementById("expenseButton");
+const submitButton = document.getElementById("submitButton");
 
 modalForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   createRecord({
+    id: new Date().getTime(),
     description: descriptionInput.value,
     amount: parseFloat(amountInput.value),
     type: incomeButton.classList.contains("active") ? "income" : "expense",
@@ -139,3 +149,98 @@ expenseButton.addEventListener("click", () => {
   incomeButton.classList.remove("active");
   incomeButton.setAttribute("aria-checked", "false");
 });
+
+// Edit Modal Window
+function handleEditModal() {
+  const openEditModal = document.querySelectorAll(".edit-button");
+  const closeEditModal = document.querySelectorAll(".close-button");
+  const editModal = document.getElementById("editDialog");
+
+  openEditModal.forEach((editBtn) =>
+    editBtn.addEventListener("click", () => {
+      editModal.showModal();
+      handleEditForm(parseInt(editBtn.id));
+    })
+  );
+
+  closeEditModal.forEach((closeBtn) =>
+    closeBtn.addEventListener("click", () => editModal.close())
+  );
+}
+
+function handleEditForm(id) {
+  console.log("event added");
+  const editModal = document.getElementById("editDialog");
+  const modalForm = document.getElementById("editForm");
+
+  const descriptionInput = document.getElementById("descriptionEditInput");
+  const amountInput = document.getElementById("amountEditInput");
+  const categoryInput = document.getElementById("categoryEditInput");
+
+  const submitButton = document.getElementById("editSubmitButton");
+  const deleteButton = document.getElementById("deleteRegistryButton");
+
+  storedRecords.forEach((record) => {
+    if (id === record.id) {
+      descriptionInput.value = record.description;
+      amountInput.value = record.amount;
+      categoryInput.value = record.category;
+    }
+  });
+
+  modalForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  });
+
+  submitButton.addEventListener("click", () => {
+    console.log(descriptionInput.value);
+
+    localStorage.setItem(
+      "records",
+      JSON.stringify(
+        storedRecords.map((record) => {
+          const description = descriptionInput.value;
+          const amount = parseFloat(amountInput.value);
+          const category = categoryInput.value;
+
+          if (record.id === id) {
+            return {
+              ...record,
+              description,
+              amount,
+              category,
+            };
+          } else {
+            return record;
+          }
+        })
+      )
+    );
+    storedRecords = JSON.parse(localStorage.getItem("records")) || [];
+
+    editModal.close();
+
+    renderRecords();
+  });
+
+  deleteButton.addEventListener("click", () => {
+    localStorage.setItem(
+      "records",
+      JSON.stringify(
+        storedRecords.filter((record) => {
+          if (record.id !== id) {
+            return true;
+          }
+        })
+      )
+    );
+    storedRecords = JSON.parse(localStorage.getItem("records")) || [];
+
+    editModal.close();
+
+    renderRecords();
+  });
+}
+
+handleEditModal();

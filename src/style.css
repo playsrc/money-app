@@ -229,11 +229,12 @@ body {
   border-radius: 5px;
   font-weight: var(--fw-500);
 
+  position: relative;
   margin-bottom: 1rem;
 }
 
 .records-table > tbody tr {
-  padding: 1em 1.5em;
+  padding: 1em 2em 1em 1.5em;
   background-color: hsl(var(--clr-white));
   box-shadow: var(--shadow);
 }
@@ -256,8 +257,19 @@ body {
   font-weight: var(--fw-600);
 }
 
+.edit-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+
+.edit-button img {
+  width: 1.5rem;
+}
+
 /* ------------------------------------------- */
-/*                 Registry Modal              */
+/*             Registry & Edit Modal           */
 /* ------------------------------------------- */
 
 ::backdrop {
@@ -298,16 +310,19 @@ body {
   padding: 0.5rem;
 }
 
+.edit-form,
 .modal-form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+.edit-form > input,
 .modal-form > input,
 .income-button,
 .expense-button,
-.submit-button {
+.submit-button,
+.delete-button {
   padding: 0.5rem 1rem;
 
   font-size: var(--fs-400);
@@ -355,16 +370,27 @@ body {
   border: 2px solid hsl(var(--clr-red));
 }
 
+.delete-button,
 .submit-button {
   margin-top: 1rem;
   color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-blue));
   transition: background-color 0.1s linear;
+  flex-basis: 100%;
 }
 
+.delete-button:focus-visible,
+.delete-button:hover,
 .submit-button:focus-visible,
 .submit-button:hover {
   background-color: hsl(var(--clr-blue-light));
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 /* ------------------------------------------- */
@@ -410,6 +436,7 @@ body {
     color: hsl(var(--clr-navy));
   }
 
+  .edit-form,
   .modal-form {
     gap: 0.8rem;
   }
@@ -481,9 +508,23 @@ body {
     flex-basis: 200%;
   }
 
-  .records-table > tbody td:nth-child(4),
+  .records-table > tbody td:nth-child(4) {
+    flex-basis: 50%;
+  }
+
   .records-table > thead th:nth-child(4) {
-    flex-basis: 70%;
+    flex-basis: 100%;
+  }
+
+  .edit-button {
+    display: flex;
+    align-self: flex-start;
+    position: relative;
+    padding: 1rem;
+  }
+
+  .edit-button img {
+    width: 1.5rem;
   }
 }
 

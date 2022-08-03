@@ -28,7 +28,11 @@
           <img src="./assets/wallet.svg" alt="" />
           <h1>Money App</h1>
         </div>
-        <button class="button registry-button" aria-controls="dialog">
+        <button
+          class="button registry-button"
+          aria-controls="dialog"
+          id="registryButton"
+        >
           Novo lançamento
         </button>
       </div>
@@ -77,17 +81,26 @@
     <dialog
       id="dialog"
       role="dialog"
-      aria-labelledby="modal-title"
+      aria-labelledby="modalTitle"
       class="registry-modal"
     >
       <div class="modal-header">
-        <h2 id="modal-title">Cadastrar novo lançamento</h2>
-        <button class="button close-button" aria-label="Fechar este diálogo">
+        <h2 id="modalTitle">Cadastrar novo lançamento</h2>
+        <button
+          class="button close-button"
+          aria-label="Fechar este diálogo"
+          id="closeButton"
+        >
           <img src="./assets/close.svg" alt="" />
         </button>
       </div>
 
-      <form class="modal-form" action="dialog" autocomplete="off">
+      <form
+        class="modal-form"
+        action="dialog"
+        autocomplete="off"
+        id="modalForm"
+      >
         <input
           type="text"
           placeholder="Descrição"
@@ -112,6 +125,7 @@
             aria-checked="true"
             type="button"
             class="button income-button active"
+            id="incomeButton"
           >
             <img src="./assets/arrow-circle-up.svg" alt="" />
             <span>Entrada</span>
@@ -121,14 +135,73 @@
             aria-checked="undefined"
             type="button"
             class="button expense-button"
+            id="expenseButton"
           >
             <img src="./assets/arrow-circle-down.svg" alt="" />
             <span>Saída</span>
           </button>
         </div>
 
-        <input type="text" placeholder="Categoria" id="categoryInput" />
-        <button class="button submit-button" type="submit">Cadastrar</button>
+        <input
+          type="text"
+          placeholder="Categoria (Opcional)"
+          id="categoryInput"
+        />
+        <button class="button submit-button" type="submit" id="submitButton">
+          Cadastrar
+        </button>
+      </form>
+    </dialog>
+
+    <dialog
+      id="editDialog"
+      role="dialog"
+      aria-labelledby="modal-title"
+      class="registry-modal"
+    >
+      <div class="modal-header">
+        <h2 id="modalTitle">Alterar lançamento</h2>
+        <button class="button close-button" aria-label="Fechar este diálogo">
+          <img src="./assets/close.svg" alt="" />
+        </button>
+      </div>
+
+      <form class="modal-form" action="dialog" autocomplete="off" id="editForm">
+        <input
+          type="text"
+          placeholder="Descrição"
+          id="descriptionEditInput"
+          required="true"
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Valor"
+          id="amountEditInput"
+          required="true"
+        />
+        <input
+          type="text"
+          placeholder="Categoria (Opcional)"
+          id="categoryEditInput"
+        />
+
+        <div class="button-group">
+          <button
+            class="button submit-button"
+            type="submit"
+            id="editSubmitButton"
+          >
+            Alterar
+          </button>
+          <button
+            class="button delete-button"
+            type="button"
+            id="deleteRegistryButton"
+          >
+            Excluir
+          </button>
+        </div>
       </form>
     </dialog>
 
